@@ -9,15 +9,13 @@ int main() {
     
    //32 blank spaces
 
-    printf("                                ====================================\n");
-    printf("                                |     COMPUTER LAB SCHEDULE MENU   |\n");
-    printf("                                ====================================\n");
-    printf("                                | 1. New Schedule                 |\n");
-    printf("                                | 2. Display All Schedules        |\n");
-    printf("                                | 3. Display Day Schedule         |\n");
-    printf("                                | 4. Exit                         |\n");
-    printf("                                ====================================\n");
-    printf("                                Enter your choice: ");
+    printf("\n\n                                ================================================================================================\n");
+    printf("                                |                                  COMPUTER LAB SCHEDULE MENU                                  |\n");
+    printf("                                ================================================================================================\n");
+    printf("                                | 1. New Schedule                                 3. Display Day Schedule                      |\n");
+    printf("                                | 2. Display All Schedules                        4. Exit                                      |\n");
+    printf("                                ================================================================================================\n");
+    printf("\n                                Enter your choice: ");
     scanf("%d", &choice);
         
         switch (choice) {
