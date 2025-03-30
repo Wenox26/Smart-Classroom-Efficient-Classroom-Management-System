@@ -1,3 +1,6 @@
+#include <stdio.h>
+
+
 int main() {
     int choice;
     
@@ -11,7 +14,7 @@ int main() {
         printf("          ||      ||\n");
         printf("          ||      ||\n");
         printf("          ||______||\n");
-        printf("          |______|\n");
+        printf("          |________|\n");
         printf("\n");
         printf("====================================\n");
         printf("|     COMPUTER LAB SCHEDULE MENU   |\n");
