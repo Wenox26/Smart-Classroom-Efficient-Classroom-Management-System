@@ -10,7 +10,7 @@ int main() {
    //32 blank spaces
 
     printf("\n\n                                ================================================================================================\n");
-    printf("                                |                                  COMPUTER LAB SCHEDULE MENU                                  |\n");
+    printf("                                |                           COMPUTER LABORATORY SCHEDULE MENU                                  |\n");
     printf("                                ================================================================================================\n");
     printf("                                | 1. New Schedule                                 3. Display Day Schedule                      |\n");
     printf("                                | 2. Display All Schedules                        4. Exit                                      |\n");
@@ -26,13 +26,13 @@ int main() {
                 printf("\n                                [Display All Schedules Functionality]\n");
                 break;
             case 3:
-                printf("\n[Display Day Schedule Functionality]\n");
+                printf("\n                                [Display Day Schedule Functionality]\n");
                 break;
             case 4:
-                printf("\nExiting the program...\n");
+                printf("\n                                Exiting the program...\n");
                 break;
             default:
-                printf("\nInvalid choice! Please try again.\n");
+                printf("\n                                Invalid choice! Please try again.\n");
         }
     
     
