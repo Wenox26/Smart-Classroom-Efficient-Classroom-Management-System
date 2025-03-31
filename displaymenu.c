@@ -11,8 +11,8 @@ int main() {
 
     do
     {
-
-
+        
+    
     
     printf("\n\n                                ================================================================================================\n");
     printf("                                |                           COMPUTER LABORATORY SCHEDULE MENU                                  |\n");
@@ -23,21 +23,21 @@ int main() {
     printf("\n                                Enter your choice: ");
     scanf("%d", &choice);
         
-        switch (choice) {
-            case 1:
-                printf("\n                                [New Schedule Functionality]\n");
-                break;
-            case 2:
-                printf("\n                                [Display All Schedules Functionality]\n");
-                break;
-            case 3:
-                printf("\n                                [Display Day Schedule Functionality]\n");
-                break;
-            case 4:
-                printf("\n                                Exiting the program...\n");
-                break;
-            default:
-                printf("\n                                Invalid choice! Please try again.\n");
+    switch (choice) {
+        case 1:
+            printf("\n                                [New Schedule Functionality]\n");
+            break;
+        case 2:
+            printf("\n                                [Display All Schedules Functionality]\n");
+            break;
+        case 3:
+            printf("\n                                [Display Day Schedule Functionality]\n");
+            break;
+        case 4:
+            printf("\n                                Exiting the program...\n");
+            break;
+        default:
+            printf("\n                                Invalid choice! Please try again.\n");
         }
 
     
@@ -49,6 +49,7 @@ int main() {
 
 
 void asciiArt(){
+
     printf("                                +==============================================================================================+ \n"); 
     printf("                                | ######   #######  ##     ## ##          ###    ########                                      |\n");
     printf("                                |##    ## ##     ## ###   ### ##         ## ##   ##     ##                                     |\n");
@@ -74,4 +75,5 @@ void asciiArt(){
     printf("                                |##    ##    ##    ##    ##    ##    ##       ##     ##                                        |\n");
     printf("                                | ######     ##     ######     ##    ######## ##     ##                                        |\n");
     printf("                                +==============================================================================================+\n");
+
 }
