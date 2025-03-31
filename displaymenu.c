@@ -24,6 +24,7 @@ int main() {
     scanf("%d", &choice);
         
     switch (choice) {
+        
         case 1:
             printf("\n                                [New Schedule Functionality]\n");
             break;
