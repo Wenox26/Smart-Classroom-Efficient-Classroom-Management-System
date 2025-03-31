@@ -13,7 +13,7 @@ int main() {
     {
 
 
-
+    
     printf("\n\n                                ================================================================================================\n");
     printf("                                |                           COMPUTER LABORATORY SCHEDULE MENU                                  |\n");
     printf("                                ================================================================================================\n");
@@ -39,7 +39,7 @@ int main() {
             default:
                 printf("\n                                Invalid choice! Please try again.\n");
         }
-        
+
     
     } while (choice >= 5 || choice == 0);
 
