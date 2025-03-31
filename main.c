@@ -13,7 +13,7 @@ int main(){
     char timeSched [20];
     char subject [20]; 
     char section [20]; 
-
+    
 
     printf("Enter day schedule: ");
     scanf("%c", &day);
