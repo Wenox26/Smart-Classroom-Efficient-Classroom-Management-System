@@ -10,9 +10,9 @@ void saveSchedule() {
     scanf("%s", day);
     getchar(); // Consume newline character
 
-    // Determine the file name based on the day
     char filename[30];
-    snprintf(filename, sizeof(filename), "%s.txt", day);
+    strcpy(filename, day);
+    strcat(filename, ".txt");
 
     FILE *file = fopen(filename, "a");
     if (file == NULL) {
@@ -29,12 +29,14 @@ void saveSchedule() {
 }
 
 void viewAllSchedules() {
-    const char *days[] = {"Monday", "Tuesday", "Thursday", "Friday"};
+    char *days[] = {"Monday", "Tuesday", "Thursday", "Friday"};
     char filename[30], line[MAX_LENGTH];
 
     printf("\nAll Schedules:\n");
     for (int i = 0; i < 4; i++) {
-        snprintf(filename, sizeof(filename), "%s.txt", days[i]);
+        strcpy(filename, days[i]);
+        strcat(filename, ".txt");
+
         FILE *file = fopen(filename, "r");
         if (file != NULL) {
             printf("\n%s:\n", days[i]);
@@ -53,7 +55,9 @@ void viewSpecificSchedule() {
     printf("Enter the day to view schedule (Monday, Tuesday, Thursday, Friday): ");
     scanf("%s", day);
 
-    snprintf(filename, sizeof(filename), "%s.txt", day);
+    strcpy(filename, day);
+    strcat(filename, ".txt");
+
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
         printf("No schedules found for %s!\n", day);
@@ -78,21 +82,16 @@ int main() {
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
-        switch (choice) {
-            case 1:
-                saveSchedule();
-                break;
-            case 2:
-                viewAllSchedules();
-                break;
-            case 3:
-                viewSpecificSchedule();
-                break;
-            case 4:
-                printf("Exiting...\n");
-                break;
-            default:
-                printf("Invalid choice! Please try again.\n");
+        if (choice == 1) {
+            saveSchedule();
+        } else if (choice == 2) {
+            viewAllSchedules();
+        } else if (choice == 3) {
+            viewSpecificSchedule();
+        } else if (choice == 4) {
+            printf("Exiting...\n");
+        } else {
+            printf("Invalid choice! Please try again.\n");
         }
     } while (choice != 4);
 
