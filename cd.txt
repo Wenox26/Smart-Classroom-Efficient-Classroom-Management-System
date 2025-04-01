@@ -1,0 +1,1 @@
+"c:\Users\User\Documents\1 VSCode\Comprog Mini System\" ; if ($?) { gcc draftFlow.c -o draftFlow } 

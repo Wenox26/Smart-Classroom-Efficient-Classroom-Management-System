@@ -4,6 +4,7 @@
 
 #define MAX_LENGTH 100
 
+//Creating Schedules
 void saveSchedule() {
     char day[20], schedule[MAX_LENGTH];
     printf("Enter the day (Monday, Tuesday, Thursday, Friday): ");
@@ -28,6 +29,7 @@ void saveSchedule() {
     printf("Schedule saved successfully for %s!\n", day);
 }
 
+//Viewing all Schedules
 void viewAllSchedules() {
     char *days[] = {"Monday", "Tuesday", "Thursday", "Friday"};
     char filename[30], line[MAX_LENGTH];
@@ -50,6 +52,7 @@ void viewAllSchedules() {
     }
 }
 
+//Viewing specific schedule
 void viewSpecificSchedule() {
     char day[20], filename[30], line[MAX_LENGTH];
     printf("Enter the day to view schedule (Monday, Tuesday, Thursday, Friday): ");
