@@ -7,6 +7,9 @@
 
 
 
+
+
+
 int main(){
 
     char day [20];
