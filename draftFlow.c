@@ -4,9 +4,20 @@
 
 #define MAX_LENGTH 100
 
+//EXPECTED OUTPUT
+//COMLABORATORY AVAILABILITY
+//DAY SCHEDULE
+//TIME SCHEDULE
+//SUBJECT
+//SECTION
+
 //Creating Schedules
 void saveSchedule() {
     char day[20], schedule[MAX_LENGTH];
+    char time[20], schedule1[MAX_LENGTH];
+    char sub[20], schedule2[MAX_LENGTH];
+    char section[20], schedule3[MAX_LENGTH];
+
     printf("Enter the day (Monday, Tuesday, Thursday, Friday): ");
     scanf("%s", day);
     getchar(); // Consume newline character
@@ -21,11 +32,21 @@ void saveSchedule() {
         return;
     }
 
-    printf("Enter the schedule: ");
-    fgets(schedule, MAX_LENGTH, stdin);
+    // SCHEDULING
+    printf("Enter the time schedule: ");
+    fgets(schedule1, MAX_LENGTH, stdin);
+    fprintf(file, "Time Schedule: %s", schedule1);
 
-    fprintf(file, "%s\n", schedule);
+    printf("Enter the Subject: ");
+    fgets(schedule2, MAX_LENGTH, stdin);
+    fprintf(file, "Subject: %s", schedule2);
+
+    printf("Enter the Section: ");
+    fgets(schedule3, MAX_LENGTH, stdin);
+    fprintf(file, "Section: %s", schedule3);
+
     fclose(file);
+
     printf("Schedule saved successfully for %s!\n", day);
 }
 
