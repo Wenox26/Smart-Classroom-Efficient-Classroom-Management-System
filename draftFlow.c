@@ -5,7 +5,7 @@
 #define MAX_LENGTH 100
 
 //EXPECTED OUTPUT
-//COMLABORATORY AVAILABILITY
+//COMLABORATORY AVAILABILITY--------------------[CONDITIONAL STATEMENT TO CHECK OVERLAPPING SCHED, TEST 5 COMLABS AVAILABILITY]
 //DAY SCHEDULE
 //TIME SCHEDULE
 //SUBJECT
@@ -35,7 +35,7 @@ void saveSchedule() {
     // SCHEDULING
     printf("Enter the time schedule: ");
     fgets(schedule1, MAX_LENGTH, stdin);
-    fprintf(file, "Time Schedule: %s", schedule1);
+    fprintf(file, "\nTime Schedule: %s", schedule1);
 
     printf("Enter the Subject: ");
     fgets(schedule2, MAX_LENGTH, stdin);
@@ -62,7 +62,7 @@ void viewAllSchedules() {
 
         FILE *file = fopen(filename, "r");
         if (file != NULL) {
-            printf("\n%s:\n", days[i]);
+            printf("\n\n%s:\n", days[i]);
             while (fgets(line, MAX_LENGTH, file)) {
                 printf("%s", line);
             }

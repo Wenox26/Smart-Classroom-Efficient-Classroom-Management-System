@@ -1,0 +1,12 @@
+
+Time Schedule: 7:30-10AM
+Subject: Comprog II
+Section: BSIT-1D
+
+Time Schedule: 11-12PM
+Subject: HCI\
+Section: BSIT-1D
+
+Time Schedule: Monday
+Subject: 7:30-10AM
+Section: ITC
