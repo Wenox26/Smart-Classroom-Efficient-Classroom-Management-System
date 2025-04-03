@@ -11,10 +11,30 @@
 //SUBJECT
 //SECTION
 
+// Function to check if a given time overlaps with existing schedules
+int isTimeOverlapping(const char *filename, const char *newTime) {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        return 0; // No existing schedules, no overlap
+    }
+
+    char line[MAX_LENGTH];
+    while (fgets(line, sizeof(line), file)) {
+        if (strstr(line, "Time Schedule:")) {
+            if (strstr(line, newTime)) {
+                fclose(file);
+                return 1; // Overlapping schedule found
+            }
+        }
+    }
+
+    fclose(file);
+    return 0; // No overlap found
+}
+
 //Creating Schedules
 void saveSchedule() {
-    char day[20], schedule[MAX_LENGTH];
-    char time[20], schedule1[MAX_LENGTH];
+    char day[20], schedule1[MAX_LENGTH];
     char sub[20], schedule2[MAX_LENGTH];
     char section[20], schedule3[MAX_LENGTH];
 
@@ -26,6 +46,15 @@ void saveSchedule() {
     strcpy(filename, day);
     strcat(filename, ".txt");
 
+    printf("Enter the time schedule: ");
+    fgets(schedule1, MAX_LENGTH, stdin);
+    schedule1[strcspn(schedule1, "\n")] = 0; // Remove newline character
+
+    if (isTimeOverlapping(filename, schedule1)) {
+        printf("Time schedule overlaps with an existing schedule.\n");
+        return;
+    }
+
     FILE *file = fopen(filename, "a");
     if (file == NULL) {
         printf("Error opening file!\n");
@@ -33,9 +62,7 @@ void saveSchedule() {
     }
 
     // SCHEDULING
-    printf("Enter the time schedule: ");
-    fgets(schedule1, MAX_LENGTH, stdin);
-    fprintf(file, "\nTime Schedule: %s", schedule1);
+    fprintf(file, "\nTime Schedule: %s\n", schedule1);
 
     printf("Enter the Subject: ");
     fgets(schedule2, MAX_LENGTH, stdin);

@@ -70,6 +70,53 @@ void saveSchedule() {
     printf("Schedule saved successfully for %s!\n", day);
 }
 
+//Viewing all Schedules
+void viewAllSchedules() {
+    char *days[] = {"Monday", "Tuesday", "Thursday", "Friday"};
+    char filename[30], line[MAX_LENGTH];
+
+    printf("\nAll Schedules:\n");
+    for (int i = 0; i < 4; i++) {
+        strcpy(filename, days[i]);
+        strcat(filename, ".txt");
+
+        FILE *file = fopen(filename, "r");
+        if (file != NULL) {
+            printf("\n\n%s:\n", days[i]);
+            while (fgets(line, MAX_LENGTH, file)) {
+                printf("%s", line);
+            }
+            fclose(file);
+        } else {
+            printf("\n%s: No schedules found!\n", days[i]);
+        }
+    }
+}
+
+//Viewing specific schedule
+void viewSpecificSchedule() {
+    char day[20], filename[30], line[MAX_LENGTH];
+    printf("Enter the day to view schedule (Monday, Tuesday, Thursday, Friday): ");
+    scanf("%s", day);
+
+    strcpy(filename, day);
+    strcat(filename, ".txt");
+
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("No schedules found for %s!\n", day);
+        return;
+    }
+
+    printf("\nSchedule for %s:\n", day);
+    while (fgets(line, MAX_LENGTH, file)) {
+        printf("%s", line);
+    }
+    fclose(file);
+}
+
+
+
 int main() {
     int choice;
     do {
@@ -83,15 +130,21 @@ int main() {
 
         if (choice == 1) {
             saveSchedule();
-        } else if (choice == 2) {
+        } 
+        else if (choice == 2) {
             viewAllSchedules();
-        } else if (choice == 3) {
+        } 
+        else if (choice == 3) {
             viewSpecificSchedule();
-        } else if (choice == 4) {
+        } 
+        else if (choice == 4) {
             printf("Exiting...\n");
-        } else {
+        } 
+        else {
             printf("Invalid choice! Please try again.\n");
         }
-    } while (choice != 4);
+    } 
+    while (choice != 4);
+    
     return 0;
 }
