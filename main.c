@@ -44,7 +44,7 @@ void saveSchedule() {
     schedule1[strcspn(schedule1, "\n")] = 0; // Remove newline character
 
     if (isTimeOverlapping(filename, schedule1)) {
-        printf("Already reserved to section --\n");
+        printf("Time schedule overlaps with an existing schedule.\n");
         return;
     }
 
@@ -75,18 +75,23 @@ int main() {
     do {
         printf("\nClassroom Management System\n");
         printf("1. Save Schedule\n");
-        printf("2. Exit\n");
+        printf("2. View All Schedules\n");
+        printf("3. View Specific Day Schedule\n");
+        printf("4. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
         if (choice == 1) {
             saveSchedule();
         } else if (choice == 2) {
+            viewAllSchedules();
+        } else if (choice == 3) {
+            viewSpecificSchedule();
+        } else if (choice == 4) {
             printf("Exiting...\n");
         } else {
             printf("Invalid choice! Please try again.\n");
         }
-    } while (choice != 2);
-
+    } while (choice != 4);
     return 0;
 }
