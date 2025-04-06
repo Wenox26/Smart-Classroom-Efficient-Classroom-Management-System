@@ -40,7 +40,7 @@ void saveSchedule() {
 
     printf("Enter the day (Monday, Tuesday, Thursday, Friday): ");
     scanf("%s", day);
-    getchar(); // Consume newline character
+    getchar(); //Newline character
 
     char filename[30];
     strcpy(filename, day);
@@ -146,6 +146,6 @@ int main() {
         }
     } while (choice != 4);
 
-    
+
     return 0;
 }
