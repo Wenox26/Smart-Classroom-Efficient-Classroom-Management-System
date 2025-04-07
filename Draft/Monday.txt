@@ -1,0 +1,8 @@
+Time Schedule: 5:00-6:00AM
+Subject: DSA
+Section: BSIT 2D
+
+Time Schedule: 7:30-10:00AM
+Subject: MMW
+Section: BSIT 1D
+
