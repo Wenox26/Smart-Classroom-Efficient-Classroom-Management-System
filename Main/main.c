@@ -53,7 +53,9 @@ void saveSchedule() {
         printf("Error opening file!\n");
         return;
     }
+     
 
+    
     // SCHEDULING
     fprintf(file, "\nTime Schedule: %s\n", schedule1);
 
