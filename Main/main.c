@@ -107,11 +107,11 @@ void saveSchedule() {
         printf("                            Error opening file!\n");
         return;
     }
-     
+    
 
     
     // SCHEDULING
-    fprintf(file, "\n                       Time Schedule: %s\n", schedule1);
+    fprintf(file, "\nTime Schedule: %s\n", schedule1);
 
     printf("                                Enter the Subject: ");
     fgets(schedule2, MAX_LENGTH, stdin);
