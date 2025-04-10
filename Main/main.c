@@ -4,6 +4,60 @@
 
 #define MAX_LENGTH 100
 
+int isTimeOverlapping(const char *filename, const char *newTime);
+void saveSchedule();
+void viewAllSchedules();
+void viewSpecificSchedule();
+void asciiArt();
+
+int main() {
+    int choice;
+    
+    asciiArt();
+    
+   //32 blank spaces
+
+    do
+    {
+    
+    printf("\n\n                                ================================================================================================\n");
+    printf("                                |                           COMPUTER LABORATORY SCHEDULE MENU                                  |\n");
+    printf("                                ================================================================================================\n");
+    printf("                                | 1. New Schedule                                 3. Display Day Schedule                      |\n");
+    printf("                                | 2. Display All Schedules                        4. Exit                                      |\n");
+    printf("                                ================================================================================================\n");
+    printf("\n                                Enter your choice: ");
+    scanf("%d", &choice);
+        
+    switch (choice) {
+        
+        case 1:
+            saveSchedule();
+            break;
+        case 2:
+            viewAllSchedules();
+            break;
+        case 3:
+            viewSpecificSchedule();
+            break;
+        case 4:
+            printf("\n                                Exiting the program...\n");
+            break;
+        default:
+            printf("\n                                Invalid choice! Please try again.\n");
+        }
+
+    
+    } while (choice >= 5 || choice == 0);
+
+
+    return 0;
+}
+
+
+
+//FUNTIONS--------------------------------------------------------------
+
 // Function to check if a given time overlaps with existing schedules
 int isTimeOverlapping(const char *filename, const char *newTime) {
     FILE *file = fopen(filename, "r");
@@ -31,7 +85,7 @@ void saveSchedule() {
     char sub[20], schedule2[MAX_LENGTH];
     char section[20], schedule3[MAX_LENGTH];
 
-    printf("Enter the day (Monday, Tuesday, Thursday, Friday): ");
+    printf("                                Enter the day (Monday, Tuesday, Thursday, Friday): ");
     scanf("%s", day);
     getchar(); // Consume newline character
 
@@ -39,18 +93,18 @@ void saveSchedule() {
     strcpy(filename, day);
     strcat(filename, ".txt");
 
-    printf("Enter the time schedule: ");
+    printf("                                Enter the time schedule: ");
     fgets(schedule1, MAX_LENGTH, stdin);
     schedule1[strcspn(schedule1, "\n")] = 0; // Remove newline character
 
     if (isTimeOverlapping(filename, schedule1)) {
-        printf("Time schedule overlaps with an existing schedule.\n");
+        printf("                            Time schedule overlaps with an existing schedule.\n");
         return;
     }
 
     FILE *file = fopen(filename, "a");
     if (file == NULL) {
-        printf("Error opening file!\n");
+        printf("                            Error opening file!\n");
         return;
     }
      
@@ -74,10 +128,10 @@ void saveSchedule() {
 
 //Viewing all Schedules
 void viewAllSchedules() {
-    char *days[] = {"Monday", "Tuesday", "Thursday", "Friday"};
+    char *days[] = {"                       Monday", "Tuesday", "Thursday", "Friday"};
     char filename[30], line[MAX_LENGTH];
 
-    printf("\nAll Schedules:\n");
+    printf("\n                              All Schedules:\n");
     for (int i = 0; i < 4; i++) {
         strcpy(filename, days[i]);
         strcat(filename, ".txt");
@@ -90,7 +144,7 @@ void viewAllSchedules() {
             }
             fclose(file);
         } else {
-            printf("\n%s: No schedules found!\n", days[i]);
+            printf("\n                      %s: No schedules found!\n", days[i]);
         }
     }
 }
@@ -98,7 +152,7 @@ void viewAllSchedules() {
 //Viewing specific schedule
 void viewSpecificSchedule() {
     char day[20], filename[30], line[MAX_LENGTH];
-    printf("Enter the day to view schedule (Monday, Tuesday, Thursday, Friday): ");
+    printf("                               Enter the day to view schedule (Monday, Tuesday, Thursday, Friday): ");
     scanf("%s", day);
 
     strcpy(filename, day);
@@ -106,11 +160,11 @@ void viewSpecificSchedule() {
 
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
-        printf("No schedules found for %s!\n", day);
+        printf("                           No schedules found for %s!\n", day);
         return;
     }
 
-    printf("\nSchedule for %s:\n", day);
+    printf("\n                             Schedule for %s:\n", day);
     while (fgets(line, MAX_LENGTH, file)) {
         printf("%s", line);
     }
@@ -118,35 +172,32 @@ void viewSpecificSchedule() {
 }
 
 
+void asciiArt(){
 
-int main() {
-    int choice;
-    do {
-        printf("\nClassroom Management System\n");
-        printf("1. Save Schedule\n");
-        printf("2. View All Schedules\n");
-        printf("3. View Specific Day Schedule\n");
-        printf("4. Exit\n");
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
+    printf("                                +==============================================================================================+ \n"); 
+    printf("                                | ######   #######  ##     ## ##          ###    ########                                      |\n");
+    printf("                                |##    ## ##     ## ###   ### ##         ## ##   ##     ##                                     |\n");
+    printf("                               	|##       ##     ## #### #### ##        ##   ##  ##     ##                                     |\n");
+    printf("                                |##       ##     ## ## ### ## ##       ##     ## ########                                      |\n");
+    printf(" #@@@@@@@@ #@@@@@@@@ @@@= @@@#  |##       ##     ## ##     ## ##       ######### ##     ##                                     |\n");
+    printf(" #@@= @@@@ #@@@#@@@@ @@@= @@@#  |##    ## ##     ## ##     ## ##       ##     ## ##     ##                                     |\n");
+    printf(" #@@@#@@@# #@@* *@@@ @@@= @@@#  | ######   #######  ##     ## ######## ##     ## ########                                      |\n");
+    printf(" #@@@ @@@@ #@@* *@@@ @@@= @@@#  |                                                                                              |\n");
+    printf(" #@@@@@@@@ #@@* *@@@ @@@= @@@#  |##     ##    ###    ##    ##    ###     ######   ######## ##     ## ######## ##    ## ########|\n");
+    printf(" #@@=  @@@ #@@@# +@@ @@@= @@@#  |###   ###   ## ##   ###   ##   ## ##   ##    ##  ##       ###   ### ##       ###   ##    ##   |\n");
+    printf(" #@@=  @@@ *@@@@@. = @@@= @@@#  |#### ####  ##   ##  ####  ##  ##   ##  ##        ##       #### #### ##       ####  ##    ##   |\n");
+    printf(" #@@@  @@@ = -#@@@@= @@@= @@@#  |## ### ## ##     ## ## ## ## ##     ## ##   #### ######   ## ### ## ######   ## ## ##    ##   |\n");
+    printf(" #@@@@@@@@ #@#  @@@@ @@@= @@@#  |##     ## ######### ##  #### ######### ##    ##  ##       ##     ## ##       ##  ####    ##   |\n");
+    printf(" #@@=  @@@ #@@* *@@@ @@@= @@@#  |##     ## ##     ## ##   ### ##     ## ##    ##  ##       ##     ## ##       ##   ###    ##   |\n");
+    printf("  #@@@@@#  #@@* *@@@ @@@@@@@#	|##     ## ##     ## ##    ## ##     ##  ######   ######## ##     ## ######## ##    ##    ##   |\n");
+    printf("   *= #@@@ #@@* *@@@ @@@@@@*    |                                                                                              |\n");
+    printf("       @@@ #@@* *@@@ @@@@#      | ######  ##    ##  ######  ######## ######## ##     ##                                        |\n");
+    printf("       +#@ #@@@@@@@@ @#+        |##    ##  ##  ##  ##    ##    ##    ##       ###   ###                                        |\n");
+    printf("            :=**+=:             |##         ####   ##          ##    ##       #### ####                                        |\n");
+    printf("                                | ######     ##     ######     ##    ######   ## ### ##                                        |\n");
+    printf("                                |      ##    ##          ##    ##    ##       ##     ##                                        |\n");
+    printf("                                |##    ##    ##    ##    ##    ##    ##       ##     ##                                        |\n");
+    printf("                                | ######     ##     ######     ##    ######## ##     ##                                        |\n");
+    printf("                                +==============================================================================================+\n");
 
-        if (choice == 1) {
-            saveSchedule();
-        } 
-        else if (choice == 2) {
-            viewAllSchedules();
-        } 
-        else if (choice == 3) {
-            viewSpecificSchedule();
-        } 
-        else if (choice == 4) {
-            printf("Exiting...\n");
-        } 
-        else {
-            printf("Invalid choice! Please try again.\n");
-        }
-    } 
-    while (choice != 4);
-    
-    return 0;
 }
