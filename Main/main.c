@@ -111,19 +111,19 @@ void saveSchedule() {
 
     
     // SCHEDULING
-    fprintf(file, "\nTime Schedule: %s\n", schedule1);
+    fprintf(file, "\n                       Time Schedule: %s\n", schedule1);
 
-    printf("Enter the Subject: ");
+    printf("                                Enter the Subject: ");
     fgets(schedule2, MAX_LENGTH, stdin);
     fprintf(file, "Subject: %s", schedule2);
 
-    printf("Enter the Section: ");
+    printf("                                Enter the Section: ");
     fgets(schedule3, MAX_LENGTH, stdin);
     fprintf(file, "Section: %s", schedule3);
 
     fclose(file);
 
-    printf("Schedule saved successfully for %s!\n", day);
+    printf("                                Schedule saved successfully for %s!\n", day);
 }
 
 //Viewing all Schedules
