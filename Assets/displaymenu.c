@@ -25,16 +25,20 @@ int main() {
         
     switch (choice) {
         
-        if (choice == 1) {
-            saveSchedule();
-        } else if (choice == 2) {
-            viewAllSchedules();
-        } else if (choice == 3) {
-            viewSpecificSchedule();
-        } else if (choice == 4) {
-            printf("Exiting...\n");
-        } else {
-            printf("Invalid choice! Please try again.\n");
+        case 1:
+            printf("\n                                [New Schedule Functionality]\n");
+            break;
+        case 2:
+            printf("\n                                [Display All Schedules Functionality]\n");
+            break;
+        case 3:
+            printf("\n                                [Display Day Schedule Functionality]\n");
+            break;
+        case 4:
+            printf("\n                                Exiting the program...\n");
+            break;
+        default:
+            printf("\n                                Invalid choice! Please try again.\n");
         }
 
     
