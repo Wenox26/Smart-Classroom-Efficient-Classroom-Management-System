@@ -140,7 +140,7 @@ int main() {
         printf("4. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
-
+        
         if (choice == 1) {
             saveSchedule();
         } else if (choice == 2) {

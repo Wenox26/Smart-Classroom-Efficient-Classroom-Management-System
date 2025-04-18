@@ -2,3 +2,11 @@
 Time Schedule: 7:30-10:00AM
 Subject: COMPROG II
 Section: BSIT 1D
+
+Time Schedule: 7:00-10:00AM
+Subject: MMW
+Section: BSIT 1C
+
+Time Schedule: 10:00-12:00PM
+Subject: MMW
+Section: BSIT 1A
