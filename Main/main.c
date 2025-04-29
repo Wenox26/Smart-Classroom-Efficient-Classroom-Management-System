@@ -61,14 +61,6 @@ int main() {
     return 0;
 }
 
-
-
-
-
-
-
-
-
 //FUNCTIONS==========================================================================
 
 //Checng overlapping schedules
@@ -90,7 +82,6 @@ int isTimeOverlapping(const char *filename, const char *newTime) {
     fclose(file);
     return 0; // No overlap found
 }
-
 
 // Creating Schedules
 void saveSchedule() {
@@ -151,50 +142,29 @@ void saveSchedule() {
 
 // Viewing all Schedules
 void viewAllSchedules() {
-//     char *days[] = {"Monday", "Tuesday", "Thursday", "Friday"};
-//     char filename[50], line[MAX_LENGTH];
+    char *days[] = {"Monday", "Tuesday", "Thursday", "Friday"};
+    char filename[50], line[MAX_LENGTH];
     
-//     printf("\n                                All Schedules:\n");
+    printf("\n                                All Schedules:\n");
 
-//     for (int lab = 1; lab <= 5; lab++) {
-//         for (int i = 0; i < 4; i++) {
+    for (int lab = 1; lab <= 5; lab++) {
+        for (int i = 0; i < 4; i++) {
 
-//             snprintf(filename, sizeof(filename), "COMLAB%d_%s.txt",lab, days[i] );
+            snprintf(filename, sizeof(filename), "COMLAB%d_%s.txt",lab, days[i] );
 
-//             FILE *file = fopen(filename, "r");
+            FILE *file = fopen(filename, "r");
             
-//             if (file != NULL) {
-//                 printf("\n                                    COMLAB%d-%s:\n", lab,  days[i]);
-//                 while (fgets(line, MAX_LENGTH, file)) {
-//                     printf("         %s", line);
-//                 }
-//                 fclose(file);
-//             }
-//         }
-//     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            if (file != NULL) {
+                printf("\n                                    COMLAB%d-%s:\n", lab,  days[i]);
+                while (fgets(line, MAX_LENGTH, file)) {
+                    printf("         %s", line);
+                }
+                fclose(file);
+            }
+        }
+    }
 
 }
-
-
-
-
-
 
 // Viewing specific day and lab schedule
 void viewSpecificSchedule() {
@@ -227,7 +197,6 @@ void viewSpecificSchedule() {
     }
     fclose(file);
 }
-
 
 //Ascii art for display menu
 void asciiArt(){
