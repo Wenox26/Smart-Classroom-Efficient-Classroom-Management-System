@@ -1,8 +1,4 @@
-
-                                Time Schedule: 1:00-3:00PM
+                                Time Schedule: 7:00AM
                                 Subject: COMPROG II
                                 Section: BSIT 1D
-
-                                Time Schedule: 7:00-10:00AM
-                                Subject: DSA
-                                Section: BSIT 2A
+                              
