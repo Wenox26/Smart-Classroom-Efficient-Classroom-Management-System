@@ -153,8 +153,7 @@ void saveSchedule() {
 void viewAllSchedules() {
     char *days[] = {"Monday", "Tuesday", "Thursday", "Friday"};
     char filename[50], line[MAX_LENGTH];
-    // int rooms[] = {1,2,3,4,5};
-
+    
     printf("\n                                All Schedules:\n");
 
     for (int i = 0; i < 4; i++) {
