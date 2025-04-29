@@ -15,19 +15,23 @@ typedef struct {
     int startMinute;
 } Schedule;
 
+//Display Menu Design
 void asciiArt();
 
-int isTimeOverlapping(const char *filename, const char *newTime, const char *newEndtime);
-int timeToMinutes(const char *timeStr);
-
-void saveSchedule();
-void viewAllSchedules();
-void viewSpecificSchedule();
+//Time Management
+int isTimeOverlapping(const char *filename, const char *newStart, const char *newEnd, char *conflictSubject, char *conflictSection);
+int convertToMinutes(const char *timeStr);
 int compareTime(const void *a, const void *b);
 void convertTo24Hour(const char *timeStr, int *hour, int *minute);
 void extractStartTime(const char *timeRange, int *hour, int *minute);
 
+//Create and Read Data
+void saveSchedule();
+void viewAllSchedules();
+void viewSpecificSchedule();
+
 int main() {
+
     int choice;
    
     do {
@@ -66,53 +70,59 @@ int main() {
 // FUNCTIONS ==========================================================================
 
 // Converts a time string (e.g., "7:30AM") to the total number of minutes since midnight
-int timeToMinutes(const char *timeStr) {
-    int hour, minute;
-    char period[3];
-    sscanf(timeStr, "%d:%d%2s", &hour, &minute, period);
+int convertToMinutes(const char *timeStr) {
 
-    if ((strcmp(period, "PM") == 0 || strcmp(period, "pm") == 0) && hour != 12) {
-        hour += 12;
-    } else if ((strcmp(period, "AM") == 0 || strcmp(period, "am") == 0) && hour == 12) {
-        hour = 0;
-    }
+    int hour, minute;
+    char meridian[3];
+    sscanf(timeStr, "%d:%d%2s", &hour, &minute, meridian);
+
+    if ((meridian[0] == 'P' || meridian[0] == 'p') && hour != 12) hour += 12;
+    if ((meridian[0] == 'A' || meridian[0] == 'a') && hour == 12) hour = 0;
 
     return hour * 60 + minute;
 }
 
+//It checks if two time ranges overlap.
+int timesOverlap(const char *start1, const char *end1, const char *start2, const char *end2) {
+    int s1 = convertToMinutes(start1);
+    int e1 = convertToMinutes(end1);
+    int s2 = convertToMinutes(start2);
+    int e2 = convertToMinutes(end2);
+    return (s1 < e2 && s2 < e1);
+}
 
 // Smarter overlap detection
-int isTimeOverlapping(const char *filename, const char *newStartTime, const char *newEndTime) {
+int isTimeOverlapping(const char *filename, const char *newStart, const char *newEnd, char *conflictSubject, char *conflictSection) {
     FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-        return 0;
-    }
+    if (!file) return 0;
 
-    int newStart = timeToMinutes(newStartTime);
-    int newEnd = timeToMinutes(newEndTime);
+    char line[256];
+    char existingStart[MAX_LENGTH], existingEnd[MAX_LENGTH];
+    char subject[100], section[100];
 
-    char line[MAX_LINE];
     while (fgets(line, sizeof(line), file)) {
-        if (strstr(line, "Time Schedule:")) {
-            char existingRange[MAX_LENGTH];
-            sscanf(line, "                                Time Schedule: %[^\n]", existingRange);
+        if (strstr(line, "Time Schedule:") != NULL) {
+            sscanf(line, "                                Time Schedule: %[^-]-%s", existingStart, existingEnd);
 
-            char existingStart[20], existingEnd[20];
-            sscanf(existingRange, "%[^-]-%s", existingStart, existingEnd);
+            fgets(line, sizeof(line), file);
+            sscanf(line, "                                Subject: %[^\n]", subject);
 
-            int existStart = timeToMinutes(existingStart);
-            int existEnd = timeToMinutes(existingEnd);
+            fgets(line, sizeof(line), file);
+            sscanf(line, "                                Section: %[^\n]", section);
 
-            // Check if overlapping
-            if (newStart < existEnd && existStart < newEnd) {
+            if (timesOverlap(existingStart, existingEnd, newStart, newEnd)) {
+                strcpy(conflictSubject, subject);
+                strcpy(conflictSection, section);
                 fclose(file);
                 return 1;
             }
         }
     }
+
     fclose(file);
     return 0;
 }
+
 // Compare function for sorting
 int compareTime(const void *a, const void *b) {
     Schedule *s1 = (Schedule *)a;
@@ -147,6 +157,10 @@ void extractStartTime(const char *timeRange, int *hour, int *minute) {
     convertTo24Hour(startTime, hour, minute);
 }
 
+
+
+
+//SCHEDULE CREATE AND READ
 // Creating Schedules
 void saveSchedule() {
     char day[20], start[MAX_LENGTH], end[MAX_LENGTH];
@@ -182,8 +196,15 @@ void saveSchedule() {
     char fullTime[MAX_LENGTH];
     snprintf(fullTime, sizeof(fullTime), "%s-%s", start, end);
 
-    if (isTimeOverlapping(filename, start, end)) {
+    //!!!!
+    char conflictSubject[100]="";
+    char conflictSection[100]="";
+
+    //!!!!!!!!!!!!!!!!!!!!
+    if (isTimeOverlapping(filename, start, end, conflictSubject, conflictSection)) {
         printf("                                Time schedule overlaps with an existing schedule.\n");
+        printf("                                Conflicting Subject: %s\n", conflictSubject);
+        printf("                                Conflicting Section: %s\n", conflictSection);
         return;
     }
 
@@ -260,12 +281,12 @@ void viewSpecificSchedule() {
     char day[20], filename[50], line[MAX_LINE];
     int roomNumber;
 
-    printf("                                Enter the day to view schedule (Monday, Tuesday, Thursday, Friday): ");
-    scanf("%s", day);
-    getchar();
-
     printf("                                Enter the Computer Room number (1 to 5): ");
     scanf("%d", &roomNumber);
+    getchar();
+
+    printf("                                Enter the day to view schedule (Monday, Tuesday, Thursday, Friday): ");
+    scanf("%s", day);
     getchar();
 
     if (roomNumber < 1 || roomNumber > 5) {
@@ -312,8 +333,3 @@ void viewSpecificSchedule() {
         printf("                                    Section: %s\n\n", list[i].section);
     }
 }
-
-
-
-
-
