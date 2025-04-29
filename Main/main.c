@@ -94,6 +94,7 @@ int isTimeOverlapping(const char *filename, const char *newTime) {
 
 // Creating Schedules
 void saveSchedule() {
+
     char day[20], schedule1[MAX_LENGTH];
     char sub[20], schedule2[MAX_LENGTH];
     char section[20], schedule3[MAX_LENGTH];
@@ -150,15 +151,18 @@ void viewAllSchedules() {
     char filename[50], line[MAX_LENGTH];
 
     printf("\n                                All Schedules:\n");
+
     for (int i = 0; i < 4; i++) {
         for (int lab = 1; lab <= 5; lab++) {
+
             snprintf(filename, sizeof(filename), "%s_COMLAB%d.txt", days[i], lab);
 
             FILE *file = fopen(filename, "r");
+            
             if (file != NULL) {
-                printf("\n%s - COMLAB%d:\n", days[i], lab);
+                printf("\n                                %s - COMLAB%d:\n", days[i], lab);
                 while (fgets(line, MAX_LENGTH, file)) {
-                    printf("%s", line);
+                    printf("         %s", line);
                 }
                 fclose(file);
             }
@@ -191,6 +195,7 @@ void viewSpecificSchedule() {
     }
 
     printf("\n                                Schedule for %s - COMLAB%d:\n", day, roomNumber);
+
     while (fgets(line, MAX_LENGTH, file)) {
         printf("%s", line);
     }

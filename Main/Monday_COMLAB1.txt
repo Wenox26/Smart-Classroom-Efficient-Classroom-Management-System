@@ -1,8 +1,4 @@
 
-Time Schedule: 7:30-10:00AM
-Subject: COMPROG II
-Section: BSIT 1D
-
-                                Time Schedule: 1:00-3:00PM
-                                Subject: HCI
-                                Section: BSIT 1C
+                                Time Schedule: 7:30-10:00AM
+                                Subject: COMPROG II
+                                Section: BSIT 1D
