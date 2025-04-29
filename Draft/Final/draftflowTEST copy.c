@@ -91,6 +91,12 @@ int isTimeOverlapping(const char *filename, const char *newTime) {
     return 0; // No overlap found
 }
 
+int compareTime(const void *a, const void *b){
+    schedule *s1 = ()
+}
+
+
+
 
 // Creating Schedules
 void saveSchedule() {
@@ -149,32 +155,32 @@ void saveSchedule() {
     printf("                                Schedule saved successfully for COMLAB%d in %s!\n",roomNumber, day);
 }
 
+
+//!!!!!!!!!!!!!SORT TIME
 // Viewing all Schedules
 void viewAllSchedules() {
-//     char *days[] = {"Monday", "Tuesday", "Thursday", "Friday"};
-//     char filename[50], line[MAX_LENGTH];
     
-//     printf("\n                                All Schedules:\n");
+    char *days[] = {"Monday", "Tuesday", "Thursday", "Friday"};
+    char filename[50], line[MAX_LENGTH];
+    
+    printf("\n                                All Schedules:\n");
 
-//     for (int lab = 1; lab <= 5; lab++) {
-//         for (int i = 0; i < 4; i++) {
+    for (int lab = 1; lab <= 5; lab++) {
+        for (int i = 0; i < 4; i++) {
 
-//             snprintf(filename, sizeof(filename), "COMLAB%d_%s.txt",lab, days[i] );
+            snprintf(filename, sizeof(filename), "COMLAB%d_%s.txt",lab, days[i] );
 
-//             FILE *file = fopen(filename, "r");
+            FILE *file = fopen(filename, "r");
             
-//             if (file != NULL) {
-//                 printf("\n                                    COMLAB%d-%s:\n", lab,  days[i]);
-//                 while (fgets(line, MAX_LENGTH, file)) {
-//                     printf("         %s", line);
-//                 }
-//                 fclose(file);
-//             }
-//         }
-//     }
-
-
-
+            if (file != NULL) {
+                printf("\n                                    COMLAB%d-%s:\n", lab,  days[i]);
+                while (fgets(line, MAX_LENGTH, file)) {
+                    printf("         %s", line);
+                }
+                fclose(file);
+            }
+        }
+    }
 
 
 
