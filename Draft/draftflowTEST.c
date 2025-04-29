@@ -35,12 +35,12 @@ void saveSchedule() {
     scanf("%s", day);
     getchar(); // Newline character
 
-    printf("Select Computer Room (1 to 5): ");
+    printf("Select Computer Laboratory (1 to 5): ");
     scanf("%d", &roomNumber);
     getchar(); // Newline character
 
     if (roomNumber < 1 || roomNumber > 5) {
-        printf("Invalid Computer Room number!\n");
+        printf("Invalid Computer Laboratory number!\n");
         return;
     }
 
@@ -131,7 +131,7 @@ void viewSpecificSchedule() {
 
 // Main menu
 int main() {
-    
+
     int choice;
 
     do {
