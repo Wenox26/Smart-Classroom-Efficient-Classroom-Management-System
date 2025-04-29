@@ -100,10 +100,7 @@ void saveSchedule() {
     char section[20], schedule3[MAX_LENGTH];
     int roomNumber;
 
-    printf("                                Enter the day (Monday, Tuesday, Thursday, Friday): ");
-    scanf("%s", day);
-    getchar(); // Newline character
-
+    //COMLAB NUMBER SELECTION
     printf("                                Select Computer Laboratory (1 to 5): ");
     scanf("%d", &roomNumber);
     getchar(); // Newline character
@@ -112,14 +109,21 @@ void saveSchedule() {
         printf("                                Invalid Computer Laboratory number!\n");
         return;
     }
+    
+    //DAY INPUT
+    printf("                                Enter the day (Monday, Tuesday, Thursday, Friday): ");
+    scanf("%s", day);
+    getchar(); // Newline character
 
     char filename[50];
-    snprintf(filename, sizeof(filename), "%s_COMLAB%d.txt", day, roomNumber);
+    snprintf(filename, sizeof(filename), "COMLAB%d_%s.txt",roomNumber, day );
 
+    //TIME SCHEDULE[FORMAT(e.x. 7:00-10:00AM)]
     printf("                                Enter the time schedule: ");
     fgets(schedule1, MAX_LENGTH, stdin);
     schedule1[strcspn(schedule1, "\n")] = 0;
 
+    //TIME OVERLAPPING[Must follow the format above]
     if (isTimeOverlapping(filename, schedule1)) {
         printf("                                Time schedule overlaps with an existing schedule.\n");
         return;
@@ -142,25 +146,26 @@ void saveSchedule() {
     fprintf(file, "                                Section: %s", schedule3);
 
     fclose(file);
-    printf("                                Schedule saved successfully for %s in COMLAB%d!\n", day, roomNumber);
+    printf("                                Schedule saved successfully for COMLAB%d in %s!\n",roomNumber, day);
 }
 
 // Viewing all Schedules
 void viewAllSchedules() {
     char *days[] = {"Monday", "Tuesday", "Thursday", "Friday"};
     char filename[50], line[MAX_LENGTH];
+    // int rooms[] = {1,2,3,4,5};
 
     printf("\n                                All Schedules:\n");
 
     for (int i = 0; i < 4; i++) {
         for (int lab = 1; lab <= 5; lab++) {
 
-            snprintf(filename, sizeof(filename), "%s_COMLAB%d.txt", days[i], lab);
+            snprintf(filename, sizeof(filename), "COMLAB%d_%s.txt",lab, days[i] );
 
             FILE *file = fopen(filename, "r");
             
             if (file != NULL) {
-                printf("\n                                %s - COMLAB%d:\n", days[i], lab);
+                printf("\n                                    COMLAB%d-%s:\n", lab,  days[i]);
                 while (fgets(line, MAX_LENGTH, file)) {
                     printf("         %s", line);
                 }
