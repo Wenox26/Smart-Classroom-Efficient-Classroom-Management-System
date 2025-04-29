@@ -131,7 +131,9 @@ void viewSpecificSchedule() {
 
 // Main menu
 int main() {
+    
     int choice;
+
     do {
         printf("\nComputer Room Management System\n");
         printf("1. Save Schedule\n");

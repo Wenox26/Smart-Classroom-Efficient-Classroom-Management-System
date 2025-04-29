@@ -29,26 +29,20 @@ int main() {
     printf("\n                                Enter your choice: ");
     scanf("%d", &choice);
         
-    switch (choice) {
-        
-        case 1:
+        if (choice == 1) {
             saveSchedule();
-            break;
-        case 2:
+        } else if (choice == 2) {
             viewAllSchedules();
-            break;
-        case 3:
+        } else if (choice == 3) {
             viewSpecificSchedule();
+        } else if (choice == 4) {
+            printf("Exiting...\n");
             break;
-        case 4:
-            printf("\n                                Exiting the program...\n");
-            break;
-        default:
-            printf("\n                                Invalid choice! Please try again.\n");
+        } else {
+            printf("Invalid choice! Please try again.\n");
         }
-
-    
-    } while (choice >= 5 || choice == 0);
+        
+    } while (choice != 4 || choice == 0);
 
 
     return 0;
