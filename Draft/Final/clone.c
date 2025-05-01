@@ -202,7 +202,7 @@ void saveSchedule() {
 
     //!!!!!!!!!!!!!!!!!!!!
     if (isTimeOverlapping(filename, start, end, conflictSubject, conflictSection)) {
-        printf("                                Time schedule overlaps with an existing schedule.\n");
+        printf("\n                                Time schedule overlaps with an existing schedule.\n");
         printf("                                Conflicting Subject: %s\n", conflictSubject);
         printf("                                Conflicting Section: %s\n", conflictSection);
         return;
