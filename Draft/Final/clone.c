@@ -6,7 +6,7 @@
 #define MAX_SCHEDULES 100
 #define MAX_LINE 300
 
-// Define "Schedule" structure
+// Define "Schedule" attributes
 typedef struct {
     char timeRange[50];    // e.g., 7:30AM-10:00AM
     char subject[100];
@@ -31,6 +31,8 @@ void viewAllSchedules();
 void viewSpecificSchedule();
 
 int main() {
+
+    asciiArt();
 
     int choice;
    
@@ -158,8 +160,6 @@ void extractStartTime(const char *timeRange, int *hour, int *minute) {
 }
 
 
-
-
 //SCHEDULE CREATE AND READ
 // Creating Schedules
 void saveSchedule() {
@@ -177,7 +177,7 @@ void saveSchedule() {
         return;
     }
 
-    printf("                                Enter the day (Monday, Tuesday, Thursday, Friday): ");
+    printf("                                Enter the day (Monday, Tuesday, Wednesday[Makeup Class] Thursday, Friday): ");
     scanf("%s", day);
     getchar();
 
@@ -196,11 +196,11 @@ void saveSchedule() {
     char fullTime[MAX_LENGTH];
     snprintf(fullTime, sizeof(fullTime), "%s-%s", start, end);
 
-    //!!!!
+    
     char conflictSubject[100]="";
     char conflictSection[100]="";
 
-    //!!!!!!!!!!!!!!!!!!!!
+    
     if (isTimeOverlapping(filename, start, end, conflictSubject, conflictSection)) {
         printf("\n                                Time schedule overlaps with an existing schedule.\n");
         printf("                                Conflicting Subject: %s\n", conflictSubject);
@@ -263,6 +263,7 @@ void viewAllSchedules() {
 
                 if (count > 0) {
                     printf("\n                                    COMLAB%d - %s:\n", lab, days[d]);
+
                     qsort(list, count, sizeof(Schedule), compareTime);
 
                     for (int i = 0; i < count; i++) {
@@ -285,7 +286,7 @@ void viewSpecificSchedule() {
     scanf("%d", &roomNumber);
     getchar();
 
-    printf("                                Enter the day to view schedule (Monday, Tuesday, Thursday, Friday): ");
+    printf("                                Enter the day to view schedule (Monday, Tuesday, Wednesday[Makeup Class] Thursday, Friday): ");
     scanf("%s", day);
     getchar();
 
@@ -324,12 +325,45 @@ void viewSpecificSchedule() {
         return;
     }
 
+    //Sorting schedules
     qsort(list, count, sizeof(Schedule), compareTime);
 
     printf("\n                                Schedule for %s - COMLAB%d:\n\n", day, roomNumber);
+    
     for (int i = 0; i < count; i++) {
         printf("                                    Time Schedule: %s\n", list[i].timeRange);
         printf("                                    Subject: %s\n", list[i].subject);
         printf("                                    Section: %s\n\n", list[i].section);
     }
+}
+
+
+void asciiArt(){
+
+    printf("                                +==============================================================================================+ \n"); 
+    printf("                                | ######   #######  ##     ## ##          ###    ########                                      |\n");
+    printf("                                |##    ## ##     ## ###   ### ##         ## ##   ##     ##                                     |\n");
+    printf("                               	|##       ##     ## #### #### ##        ##   ##  ##     ##                                     |\n");
+    printf("                                |##       ##     ## ## ### ## ##       ##     ## ########                                      |\n");
+    printf(" #@@@@@@@@ #@@@@@@@@ @@@= @@@#  |##       ##     ## ##     ## ##       ######### ##     ##                                     |\n");
+    printf(" #@@= @@@@ #@@@#@@@@ @@@= @@@#  |##    ## ##     ## ##     ## ##       ##     ## ##     ##                                     |\n");
+    printf(" #@@@#@@@# #@@* *@@@ @@@= @@@#  | ######   #######  ##     ## ######## ##     ## ########                                      |\n");
+    printf(" #@@@ @@@@ #@@* *@@@ @@@= @@@#  |                                                                                              |\n");
+    printf(" #@@@@@@@@ #@@* *@@@ @@@= @@@#  |##     ##    ###    ##    ##    ###     ######   ######## ##     ## ######## ##    ## ########|\n");
+    printf(" #@@=  @@@ #@@@# +@@ @@@= @@@#  |###   ###   ## ##   ###   ##   ## ##   ##    ##  ##       ###   ### ##       ###   ##    ##   |\n");
+    printf(" #@@=  @@@ *@@@@@. = @@@= @@@#  |#### ####  ##   ##  ####  ##  ##   ##  ##        ##       #### #### ##       ####  ##    ##   |\n");
+    printf(" #@@@  @@@ = -#@@@@= @@@= @@@#  |## ### ## ##     ## ## ## ## ##     ## ##   #### ######   ## ### ## ######   ## ## ##    ##   |\n");
+    printf(" #@@@@@@@@ #@#  @@@@ @@@= @@@#  |##     ## ######### ##  #### ######### ##    ##  ##       ##     ## ##       ##  ####    ##   |\n");
+    printf(" #@@=  @@@ #@@* *@@@ @@@= @@@#  |##     ## ##     ## ##   ### ##     ## ##    ##  ##       ##     ## ##       ##   ###    ##   |\n");
+    printf("  #@@@@@#  #@@* *@@@ @@@@@@@#	|##     ## ##     ## ##    ## ##     ##  ######   ######## ##     ## ######## ##    ##    ##   |\n");
+    printf("   *= #@@@ #@@* *@@@ @@@@@@*    |                                                                                              |\n");
+    printf("       @@@ #@@* *@@@ @@@@#      | ######  ##    ##  ######  ######## ######## ##     ##                                        |\n");
+    printf("       +#@ #@@@@@@@@ @#+        |##    ##  ##  ##  ##    ##    ##    ##       ###   ###                                        |\n");
+    printf("            :=**+=:             |##         ####   ##          ##    ##       #### ####                                        |\n");
+    printf("                                | ######     ##     ######     ##    ######   ## ### ##                                        |\n");
+    printf("                                |      ##    ##          ##    ##    ##       ##     ##                                        |\n");
+    printf("                                |##    ##    ##    ##    ##    ##    ##       ##     ##                                        |\n");
+    printf("                                | ######     ##     ######     ##    ######## ##     ##                                        |\n");
+    printf("                                +==============================================================================================+\n");
+
 }

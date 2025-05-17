@@ -177,9 +177,14 @@ void saveSchedule() {
         return;
     }
 
-    printf("                                Enter the day (Monday, Tuesday, Thursday, Friday): ");
+    printf("                                Enter the day (Monday, Tuesday, Wednesday[Makeup Class] Thursday, Friday): ");
     scanf("%s", day);
     getchar();
+
+    if (strcmp(day, "Saturday") == 0 || strcmp(day, "saturday") == 0 || strcmp(day, "Sunday") == 0   || strcmp(day, "sunday") == 0) {
+    printf("                                Error: Scheduling is not allowed on Saturdays and Sundays.\n");
+    return;
+    }   
 
     char filename[50];
     snprintf(filename, sizeof(filename), "COMLAB%d_%s.txt", roomNumber, day);
@@ -286,7 +291,7 @@ void viewSpecificSchedule() {
     scanf("%d", &roomNumber);
     getchar();
 
-    printf("                                Enter the day to view schedule (Monday, Tuesday, Thursday, Friday): ");
+    printf("                                Enter the day to view schedule (Monday, Tuesday, Wednesday[Makeup Class] Thursday, Friday): ");
     scanf("%s", day);
     getchar();
 
