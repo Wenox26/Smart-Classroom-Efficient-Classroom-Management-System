@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
+//Buffer Sizes
 #define MAX_LENGTH 100
 #define MAX_SCHEDULES 100
 #define MAX_LINE 300
@@ -15,6 +15,7 @@ typedef struct {
     int startMinute;
 } Schedule;
 
+//FUNCTION DECLARATIONS ==================================================
 //Display Menu Design
 void asciiArt();
 
@@ -30,6 +31,8 @@ void saveSchedule();
 void viewAllSchedules();
 void viewSpecificSchedule();
 
+
+//MAIN FUNCTION ==========================================================
 int main() {
 
     asciiArt();
@@ -40,7 +43,7 @@ int main() {
         printf("\n\n                                ================================================================================================\n");
         printf("                                |                           COMPUTER LABORATORY SCHEDULE MENU                                  |\n");
         printf("                                ================================================================================================\n");
-        printf("                                | 1. New Schedule                                 3. Display Specific Day Schedule             |\n");
+        printf("                                | 1. New Schedule                                 3. Display Specific Schedule                 |\n");
         printf("                                | 2. Display All Schedules                        4. Exit                                      |\n");
         printf("                                ================================================================================================\n");
         printf("\n                                Enter your choice: ");
@@ -69,7 +72,9 @@ int main() {
     return 0;
 }
 
-// FUNCTIONS ==========================================================================
+
+
+// FUNCTION DEFINITTION ==================================================
 
 // Converts a time string (e.g., "7:30AM") to the total number of minutes since midnight
 int convertToMinutes(const char *timeStr) {
@@ -177,7 +182,7 @@ void saveSchedule() {
         return;
     }
 
-    printf("                                Enter the day (Monday, Tuesday, Wednesday[Makeup Class] Thursday, Friday): ");
+    printf("                                Enter the day (Monday, Tuesday, Wednesday[Makeup Class], Thursday, Friday): ");
     scanf("%s", day);
     getchar();
 
@@ -185,7 +190,7 @@ void saveSchedule() {
     printf("                                Error: Scheduling is not allowed on Saturdays and Sundays.\n");
     return;
     }   
-    
+
     char filename[50];
     snprintf(filename, sizeof(filename), "COMLAB%d_%s.txt", roomNumber, day);
 
@@ -238,7 +243,7 @@ void saveSchedule() {
 
 // Viewing all Schedules
 void viewAllSchedules() {
-    char *days[] = {"Monday", "Tuesday", "Thursday", "Friday"};
+    char *days[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
     char filename[50], line[MAX_LINE];
 
     printf("\n                                All Schedules:\n");

@@ -2,3 +2,7 @@
                                 Subject: PICPS
                                 Section: BSIT 1D
 
+                                Time Schedule: 5:00PM-7:00PM
+                                Subject: HCI
+                                Section: BSIT 1A
+
