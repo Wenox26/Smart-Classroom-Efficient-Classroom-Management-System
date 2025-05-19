@@ -185,7 +185,7 @@ void saveSchedule() {
     printf("                                Error: Scheduling is not allowed on Saturdays and Sundays.\n");
     return;
     }   
-
+    
     char filename[50];
     snprintf(filename, sizeof(filename), "COMLAB%d_%s.txt", roomNumber, day);
 
@@ -341,7 +341,6 @@ void viewSpecificSchedule() {
         printf("                                    Section: %s\n\n", list[i].section);
     }
 }
-
 
 void asciiArt(){
 

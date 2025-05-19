@@ -6,3 +6,7 @@
                                 Subject: HCI
                                 Section: BSIT 1C
 
+                                Time Schedule: 4:00pm-7:00pm
+                                Subject: HCI
+                                Section: BSIT 1A
+
