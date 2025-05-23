@@ -2,3 +2,11 @@
                                 Subject: ITF
                                 Section: BSIT 1C
 
+                                Time Schedule: 10:30AM-12:00PM
+                                Subject: ITF
+                                Section: BSIT 1B
+
+                                Time Schedule: 1:00PM-3:00PM
+                                Subject: ITC
+                                Section: BSIT 1B
+

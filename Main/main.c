@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 //Buffer Sizes
@@ -74,7 +75,7 @@ int main() {
 
 
 
-// FUNCTION DEFINITTION ==================================================
+// FUNCTION DEFINITTION ==========================================================================
 
 // Converts a time string (e.g., "7:30AM") to the total number of minutes since midnight
 int convertToMinutes(const char *timeStr) {
