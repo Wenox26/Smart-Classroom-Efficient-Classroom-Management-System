@@ -5,3 +5,6 @@
 
 <h2>Display Menu</h2>
 <img src="/Assets/Output/1.png">
+
+<h2>Creating/Adding Schedules</h2>
+<img src="/Assets/Output/2.png">
