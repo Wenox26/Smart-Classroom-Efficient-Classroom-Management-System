@@ -15,6 +15,21 @@
 <h2>Displaying Specific Schedule</h2>
 <img src="/Assets/Output/4.png">
 
-<h2>Displaying Specific Schedule</h2>
-<img src="/Assets/Output/">
+<h2>Schedule Overlapping Management</h2>
+<img src="/Assets/Output/5.png">
+
+<h2>Error Management</h2>
+<img src="/Assets/Output/6.png">
+<img src="/Assets/Output/7.png">
+<img src="/Assets/Output/8.png">
+
+<h2>File Handling</h2>
+<img src="/Assets/Output/9.png">
+
+
+>Team Bangan
+- Owen M. Jerusalem| Lead Programmer
+- John Paul Emmanuel Pausal| Co-Programmer
+- Katheen B. Butad| Documentary
+
 
